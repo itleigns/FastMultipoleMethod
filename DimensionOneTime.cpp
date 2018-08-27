@@ -25,7 +25,11 @@ int main(){
     CalculateInSquare(X,U,Y,N,M,ans);
     chrono::system_clock::time_point  end = chrono::system_clock::now();
     double elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
-    cout << "duration = " << elapsed/1000 << "sec.\n";
+    #ifdef PLOT
+        cout << N << " " << elapsed/1000 << " ";
+    #else
+        cout << "duration = " << elapsed/1000 << "sec.\n";
+    #endif
     for(int i=0;i<M;i++){
         ans[i] = 0;
     }
@@ -33,7 +37,11 @@ int main(){
     CalculateInSqrt(X,U,Y,N,M,ans);
     end = chrono::system_clock::now();
     elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
-    cout << "duration = " << elapsed/1000 << "sec.\n";
+    #ifdef PLOT
+        cout << elapsed/1000 << " ";
+    #else
+        cout << "duration = " << elapsed/1000 << "sec.\n";
+    #endif
     for(int i=0;i<M;i++){
         ans[i] = 0;
     }
@@ -41,7 +49,11 @@ int main(){
     CalculateInLog(X,U,Y,N,M,ans);
     end = chrono::system_clock::now();
     elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
-    cout << "duration = " << elapsed/1000 << "sec.\n";
+    #ifdef PLOT
+        cout << elapsed/1000 << " ";
+    #else
+        cout << "duration = " << elapsed/1000 << "sec.\n";
+    #endif
     for(int i=0;i<M;i++){
         ans[i] = 0;
     }
@@ -49,5 +61,9 @@ int main(){
     CalculateInLinear(X,U,Y,N,M,ans);
     end = chrono::system_clock::now();
     elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
-    cout << "duration = " << elapsed/1000 << "sec.\n";
+    #ifdef PLOT
+        cout << elapsed/1000 << "\n";
+    #else
+        cout << "duration = " << elapsed/1000 << "sec.\n";
+    #endif
 }

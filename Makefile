@@ -10,4 +10,4 @@ measuretimeforplot: DimensionOneNormal.cpp DimensionOneSqrt.cpp DimensionOneLog.
 GenerateData.exe: GenerateData.cs
 	mcs GenerateData.cs
 clean:
-	rm run measuretime measureerror
+	rm run measuretime measureerror measuretimeforplot GenerateData.exe result.dat duration.png

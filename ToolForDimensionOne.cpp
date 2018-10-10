@@ -12,11 +12,12 @@ public:
         }
     }
     double Calculation(double y){
-        double t = 1/(y-Center);
+        double di = 1/(y-Center);
+        double t = di;
         double ans = 0;
         for(int i=0;i<Coefficient_Number;i++){
             ans += Coefficient[i]*t;
-            t /= (y-Center);
+            t *= di;
         }
         return ans;
     }
@@ -58,10 +59,11 @@ public:
         return ans;
     }
     void Add(double x,double u){
-        double t = -u/(x-Center);
+        double di = 1/(x-Center);
+        double t = -u*di;
         for(int i=0;i<Coefficient_Number;i++){
             Coefficient[i] += t;
-            t /= (x-Center);
+            t *= di;
         }
     }
     void Add(LocalExpansion L,double *A){
@@ -74,14 +76,15 @@ public:
         }
     }
     void Add(Multipole M,double *A){
-        double t1 = -1/(M.Center-Center);
+        double di = -1/(M.Center-Center);
+        double t1 = di;
         for(int i=0;i<Coefficient_Number;i++){
             double t2 = t1;
             for(int j=0;j<Coefficient_Number;j++){
                 Coefficient[i] += M.Coefficient[j]*A[(i+j)*2*Coefficient_Number+j]*t2;
-                t2 /= -1*(M.Center-Center);
+                t2 *= di;
             }
-            t1 /= (M.Center-Center);
+            t1 *= -di;
         }
     }
 };

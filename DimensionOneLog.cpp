@@ -8,7 +8,6 @@ namespace DimensionOneLog{
         vector<double> X;
         vector<double> U;
     public:
-        int depth;
         Section(){}
         Section(double center)
             : mult(center){}

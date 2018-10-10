@@ -9,7 +9,6 @@ namespace DimensionOneLinear{
     public:
         Multipole mult;
         LocalExpansion loc;
-        int depth;
         Section(){}
         Section(double center)
             : mult(center),loc(center){}

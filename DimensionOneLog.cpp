@@ -38,7 +38,7 @@ namespace DimensionOneLog{
         return ans;
     }
     void Calculate(double *X,double *U,double *Y,int N,int M,double *ans){
-        int Block = BiggestBit((max(N,M)));
+        int Block = BiggestBit((int)(3*log(2)*N*M/(N*Coefficient_Number+3*M*Coefficient_Number)));
         vector<Section> Sec;
         {
             Sec.push_back(Section());

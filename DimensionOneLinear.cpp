@@ -36,7 +36,7 @@ namespace DimensionOneLinear{
         return ans;
     }
     void Calculate(double *X,double *U,double *Y,int N,int M,double *ans){
-        int Block = BiggestBit((max(N,M)));
+        int Block = BiggestBit(sqrt(0.6*N*M)/Coefficient_Number);
         double Conv[4*Coefficient_Number*Coefficient_Number];
         {
             Conv[0] = 1;

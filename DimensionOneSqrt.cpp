@@ -27,7 +27,7 @@ namespace DimensionOneSqrt{
         }
     };
     void Calculate(double *X,double *U,double *Y,int N,int M,double *ans){
-        int Block = (int)(sqrt(N+M));
+        int Block = max((int)(sqrt(3*N/Coefficient_Number)),1);
         vector<Section> Sec;
         for(int i=0;i<Block;i++){
             Sec.push_back(Section((i+0.5)/Block));

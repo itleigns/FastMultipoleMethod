@@ -5,6 +5,7 @@ void CalculateInSquare(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInSqrt(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLog(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLinear(double *X,double *U,double *Y,int N,int M,double* ans);
+void CalculateForUnbalance(double *X,double *U,double *Y,int N,int M,double* ans);
 int main(){
     int N,M;
     cin >> N >> M;
@@ -59,6 +60,18 @@ int main(){
     }
     start = chrono::system_clock::now();
     CalculateInLinear(X,U,Y,N,M,ans);
+    end = chrono::system_clock::now();
+    elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
+    #ifdef PLOT
+        cout << elapsed/1000 << "\n";
+    #else
+        cout << "duration = " << elapsed/1000 << "sec.\n";
+    #endif
+    for(int i=0;i<M;i++){
+        ans[i] = 0;
+    }
+    start = chrono::system_clock::now();
+    CalculateForUnbalance(X,U,Y,N,M,ans);
     end = chrono::system_clock::now();
     elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
     #ifdef PLOT

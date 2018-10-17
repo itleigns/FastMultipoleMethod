@@ -4,6 +4,7 @@ void CalculateInSquare(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInSqrt(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLog(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLinear(double *X,double *U,double *Y,int N,int M,double* ans);
+void CalculateForUnbalance(double *X,double *U,double *Y,int N,int M,double *ans);
 int main(int argc, char *argv[]){
     int N,M;
     cin >> N >> M;
@@ -32,6 +33,9 @@ int main(int argc, char *argv[]){
     }
     else if(str == "Linear"){
         CalculateInLinear(X,U,Y,N,M,ans);    
+    }
+    else if(str == "Unbalance"){
+        CalculateForUnbalance(X,U,Y,N,M,ans);
     }
     for(int i=0;i<M;i++){
         cout << ans[i] << endl;

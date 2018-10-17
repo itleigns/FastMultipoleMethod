@@ -5,6 +5,7 @@ void CalculateInSquare(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInSqrt(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLog(double *X,double *U,double *Y,int N,int M,double* ans);
 void CalculateInLinear(double *X,double *U,double *Y,int N,int M,double* ans);
+void CalculateForUnbalance(double *X,double *U,double *Y,int N,int M,double* ans);
 int main()
 {
     int N,M;
@@ -22,16 +23,19 @@ int main()
     double ans2[M];
     double ans3[M];
     double ans4[M];
+    double ans5[M];
     for(int i=0;i<M;i++){
         ans1[i] = 0;
         ans2[i] = 0;
         ans3[i] = 0;
         ans4[i] = 0;
+        ans5[i] = 0;
     }
     CalculateInSquare(X,U,Y,N,M,ans1);
     CalculateInSqrt(X,U,Y,N,M,ans2);
     CalculateInLog(X,U,Y,N,M,ans3);
     CalculateInLinear(X,U,Y,N,M,ans4);
+    CalculateForUnbalance(X,U,Y,N,M,ans5);
     double maxa = 0;
     double maxb = 0;
     for(int i=0;i<M;i++){
@@ -51,6 +55,13 @@ int main()
     for(int i=0;i<M;i++){
         maxa = max(maxa,abs(ans1[i]-ans4[i]));
         maxb = max(maxb,abs((ans1[i]-ans4[i])/ans1[i]));
+    }
+    cout << maxa << " " << maxb << endl;
+    maxa = 0;
+    maxb = 0;
+    for(int i=0;i<M;i++){
+        maxa = max(maxa,abs(ans1[i]-ans5[i]));
+        maxb = max(maxb,abs((ans1[i]-ans5[i])/ans1[i]));
     }
     cout << maxa << " " << maxb << endl;
 }

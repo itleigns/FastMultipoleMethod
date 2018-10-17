@@ -63,7 +63,7 @@ int main(){
     end = chrono::system_clock::now();
     elapsed = chrono::duration_cast<chrono::milliseconds>(end-start).count();
     #ifdef PLOT
-        cout << elapsed/1000 << "\n";
+        cout << elapsed/1000 << " ";
     #else
         cout << "duration = " << elapsed/1000 << "sec.\n";
     #endif

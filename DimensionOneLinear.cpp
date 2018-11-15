@@ -10,8 +10,8 @@ namespace DimensionOneLinear{
         Multipole mult;
         LocalExpansion loc;
         Section(){}
-        Section(double center)
-            : mult(center),loc(center){}
+        Section(double center,double size)
+            : mult(center,size),loc(center,size){}
         void Add(double x,double u){
             mult.Add(x,u);
             X.push_back(x);
@@ -29,7 +29,7 @@ namespace DimensionOneLinear{
         }
     };
     int BiggestBit(int N){
-        int ans = 1;
+        int ans = 4;
         while(ans < N){
             ans *= 2;
         }
@@ -54,11 +54,13 @@ namespace DimensionOneLinear{
             Sec.push_back(Section());
             Sec.push_back(Section());
             int b = 4;
+            double BlockSize = 0.25;
             while(b <= Block){
                 for(int i=0;i<b;i++){
-                    Sec.push_back(Section((i+0.5)/b));
+                    Sec.push_back(Section((i+0.5)/b,BlockSize));
                 }
                 b *= 2;
+                BlockSize /= 2;
             }
         }
         for(int i=0;i<N;i++){
@@ -111,4 +113,9 @@ namespace DimensionOneLinear{
 }
 void CalculateInLinear(double *X,double *U,double *Y,int N,int M,double *ans){
     DimensionOneLinear::Calculate(X,U,Y,N,M,ans);
+}
+long OperationCountForLinear(long N,long M){
+    long Block = BiggestBit(sqrt(0.6*N*M)/Coefficient_Number);
+    long b = (long)(log2(Block*1.5));
+    return 28409*Block + 63*N+93*M+9*M*N/Block;
 }

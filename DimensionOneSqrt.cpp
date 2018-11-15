@@ -8,8 +8,8 @@ namespace DimensionOneSqrt{
         vector<double> X;
         vector<double> U;
     public:
-        Section(double center)
-            : mult(center){}
+        Section(double center,double size)
+            : mult(center,size){}
         void Add(double x,double u){
             mult.Add(x,u);
             X.push_back(x);
@@ -29,8 +29,9 @@ namespace DimensionOneSqrt{
     void Calculate(double *X,double *U,double *Y,int N,int M,double *ans){
         int Block = max((int)(sqrt(3*N/Coefficient_Number)),1);
         vector<Section> Sec;
+        double BlockSize = 1.0/Block;
         for(int i=0;i<Block;i++){
-            Sec.push_back(Section((i+0.5)/Block));
+            Sec.push_back(Section((i+0.5)/Block,BlockSize));
         }
         for(int i=0;i<N;i++){
             int p = (int)(X[i]*Block);

@@ -9,8 +9,8 @@ namespace DimensionOneLog{
         vector<double> U;
     public:
         Section(){}
-        Section(double center)
-            : mult(center){}
+        Section(double center,double size)
+            : mult(center,size){}
         void Add(double x,double u){
             mult.Add(x,u);
             X.push_back(x);
@@ -31,7 +31,7 @@ namespace DimensionOneLog{
         }
     };
     int BiggestBit(int N){
-        int ans = 1;
+        int ans = 4;
         while(ans < N){
             ans *= 2;
         }
@@ -45,11 +45,13 @@ namespace DimensionOneLog{
             Sec.push_back(Section());
             Sec.push_back(Section());
             int b = 4;
+            double BlockSize = 0.25;
             while(b <= Block){
                 for(int i=0;i<b;i++){
-                    Sec.push_back(Section((i+0.5)/b));
+                    Sec.push_back(Section((i+0.5)/b,BlockSize));
                 }
                 b *= 2;
+                BlockSize /= 2;
             }
         }
         for(int i=0;i<N;i++){

@@ -23,7 +23,7 @@ namespace DimensionOneForUnbalance{
         double Center;
         Section(){}
         Section(double center,double length,int depth,Section* pare,long long place)
-            : mult(center),loc(center),Center(center),Length(length),Depth(depth),
+            : mult(center,length),loc(center,length),Center(center),Length(length),Depth(depth),
             left(nullptr),right(nullptr),parent(pare),Place(place){}
         void Add(double x,double u){
             X.push_back(x);

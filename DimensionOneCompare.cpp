@@ -38,30 +38,70 @@ int main()
     CalculateForUnbalance(X,U,Y,N,M,ans5);
     double maxa = 0;
     double maxb = 0;
+    int exceptionerror = 0;
     for(int i=0;i<M;i++){
         maxa = max(maxa,abs(ans1[i]-ans2[i]));
         maxb = max(maxb,abs((ans1[i]-ans2[i])/ans1[i]));
+        if(isnan(ans1[i]) != isnan(ans2[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) != isinf(ans2[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) && isinf(ans2[i]) && ans1[i] != ans2[i]){
+            exceptionerror++;
+        }
     }
-    cout << maxa << " " << maxb << endl;
+    cout << maxa << " " << maxb << " " << exceptionerror << endl;
     maxa = 0;
     maxb = 0;
+    exceptionerror = 0;
     for(int i=0;i<M;i++){
         maxa = max(maxa,abs(ans1[i]-ans3[i]));
         maxb = max(maxb,abs((ans1[i]-ans3[i])/ans1[i]));
+        if(isnan(ans1[i]) != isnan(ans3[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) != isinf(ans3[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) && isinf(ans3[i]) && ans1[i] != ans3[i]){
+            exceptionerror++;
+        }
     }
-    cout << maxa << " " << maxb << endl;
+    cout << maxa << " " << maxb << " " << exceptionerror << endl;
     maxa = 0;
     maxb = 0;
+    exceptionerror = 0;
     for(int i=0;i<M;i++){
         maxa = max(maxa,abs(ans1[i]-ans4[i]));
         maxb = max(maxb,abs((ans1[i]-ans4[i])/ans1[i]));
+        if(isnan(ans1[i]) != isnan(ans4[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) != isinf(ans4[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) && isinf(ans4[i]) && ans1[i] != ans4[i]){
+            exceptionerror++;
+        }
     }
-    cout << maxa << " " << maxb << endl;
+    cout << maxa << " " << maxb << " " << exceptionerror << endl;
     maxa = 0;
     maxb = 0;
+    exceptionerror = 0;
     for(int i=0;i<M;i++){
         maxa = max(maxa,abs(ans1[i]-ans5[i]));
         maxb = max(maxb,abs((ans1[i]-ans5[i])/ans1[i]));
+        if(isnan(ans1[i]) != isnan(ans5[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) != isinf(ans5[i])){
+            exceptionerror++;
+        }
+        else if(isinf(ans1[i]) && isinf(ans5[i]) && ans1[i] != ans5[i]){
+            exceptionerror++;
+        }
     }
-    cout << maxa << " " << maxb << endl;
+    cout << maxa << " " << maxb << " " << exceptionerror << endl;
 }
